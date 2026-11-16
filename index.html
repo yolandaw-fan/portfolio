@@ -81,13 +81,13 @@ branding:{title:'Branding',blurb:'Identities for small studios, cafés and maker
 
 const fig=([t,svg,m])=>`<figure><div class="tile" role="img" aria-label="${t}">${svg}</div><figcaption><b>${t}</b><span>${m}</span></figcaption></figure>`;
 const NAV=cur=>`<nav aria-label="Portfolio sections">${Object.entries(ART).map(([k,v])=>`<a href="#${k}"${k===cur?' aria-current="page"':''}>${v.title}</a>`).join('')}</nav>`;
-const FOOT=`<footer><h3>Say hello</h3><p><a href="mailto:hello@example.com">hello@example.com</a><br><a href="#">Back to home</a></p></footer>`;
+const FOOT=`<footer><h3>Say hello</h3><p><a href="mailto:yolandawfan@gmail.com">yolandawfan@gmail.com</a><br><a href="#">Back to home</a></p></footer>`;
 function render(){
  const k=location.hash.slice(1),app=document.getElementById('app');
  if(ART[k]){document.title=ART[k].title+' — Yolanda W Fan';
   app.innerHTML=`<header class="hero small"><div class="top"><a href="#">Yolanda W Fan</a>${NAV(k)}</div><h1>${ART[k].title}</h1></header><section><div class="grid">${ART[k].items.map(fig).join('')}</div><div class="more">${Object.keys(ART).filter(x=>x!==k).map(x=>`<a href="#${x}">${ART[x].title}</a>`).join('')}</div></section>${FOOT}`;
  }else{document.title='Yolanda W Fan — Art Portfolio';
-  app.innerHTML=`<header class="hero"><div class="top"><span>Yolanda W Fan</span><span>Portfolio, 2026</span></div><div><h1>Steeped in Memories<em>回忆·回甘</em></h1><p class="lede">Drawings, graphic design and branding by Yolanda W Fan.</p><div class="index">${Object.entries(ART).map(([x,v])=>`<a href="#${x}">${v.title}</a>`).join('')}</div></div></header><section><div class="grid">${Object.entries(ART).map(([x,v])=>`<a class="cat" href="#${x}"><div class="tile">${v.items[0][1]}</div><h3>${v.title}</h3><p>${v.items.length} pieces</p></a>`).join('')}</div></section>${FOOT}`;}
+  app.innerHTML=`<header class="hero"><div class="top"><span>Yolanda W Fan</span><span>Portfolio, 2026</span></div><div><h1>Steeped in<em>Memories</em></h1><p class="lede">Drawings, graphic design and branding by Yolanda W Fan.</p><div class="index">${Object.entries(ART).map(([x,v])=>`<a href="#${x}">${v.title}</a>`).join('')}</div></div></header><section><div class="grid">${Object.entries(ART).map(([x,v])=>`<a class="cat" href="#${x}"><div class="tile">${v.items[0][1]}</div><h3>${v.title}</h3><p>${v.items.length} pieces</p></a>`).join('')}</div></section>${FOOT}`;}
  window.scrollTo(0,0);
 }
 addEventListener('hashchange',render);render();
