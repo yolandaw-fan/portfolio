@@ -87,42 +87,8 @@ function render(){
  if(ART[k]){document.title=ART[k].title+' — Yolanda W Fan';
   app.innerHTML=`<header class="hero small"><div class="top"><a href="#">Yolanda W Fan</a>${NAV(k)}</div><h1>${ART[k].title}</h1></header><section><div class="grid">${ART[k].items.map(fig).join('')}</div><div class="more">${Object.keys(ART).filter(x=>x!==k).map(x=>`<a href="#${x}">${ART[x].title}</a>`).join('')}</div></section>${FOOT}`;
  }else{document.title='Yolanda W Fan — Art Portfolio';
-  app.innerHTML=`<header class="hero"><div class="top"><span>Yolanda W Fan</span><span>Portfolio, 2026</span></div><div><h1>Steeped in Memory<em>回忆·回甘</em></h1><p class="lede">Drawings, graphic design and branding by Yolanda W Fan, an independent artist and designer.</p><div class="index">${Object.entries(ART).map(([x,v])=>`<a href="#${x}">${v.title}</a>`).join('')}</div></div></header><section><div class="grid">${Object.entries(ART).map(([x,v])=>`<a class="cat" href="#${x}"><div class="tile">${v.items[0][1]}</div><h3>${v.title}</h3><p>${v.items.length} pieces</p></a>`).join('')}</div></section>${FOOT}`;}
+  app.innerHTML=`<header class="hero"><div class="top"><span>Yolanda W Fan</span><span>Portfolio, 2026</span></div><div><h1>Steeped in Memories<em>回忆·回甘</em></h1><p class="lede">Drawings, graphic design and branding by Yolanda W Fan.</p><div class="index">${Object.entries(ART).map(([x,v])=>`<a href="#${x}">${v.title}</a>`).join('')}</div></div></header><section><div class="grid">${Object.entries(ART).map(([x,v])=>`<a class="cat" href="#${x}"><div class="tile">${v.items[0][1]}</div><h3>${v.title}</h3><p>${v.items.length} pieces</p></a>`).join('')}</div></section>${FOOT}`;}
  window.scrollTo(0,0);
 }
 addEventListener('hashchange',render);render();
- <!-- ABOUT SECTION: paste just before </body> -->
-<style>
-  #about{
-    --ink:#2a382a; --soft:#5d6b5d; --mist:#e8ebea; --card:#f1f5ee;
-    padding:clamp(64px,10vw,140px) clamp(24px,5vw,56px);
-    background:#fcfdfb; color:var(--ink);
-    font-family:'Karla',system-ui,sans-serif; font-weight:300; line-height:1.6;
-  }
-  #about *{box-sizing:border-box}
-  #about h2{
-    font-family:'Instrument Serif',Georgia,serif; font-weight:400;
-    font-size:clamp(2.6rem,7vw,6rem); line-height:1; margin:0 0 2.5rem;
-    letter-spacing:-.02em;
-  }
-  #about .about-grid{
-    display:grid; gap:clamp(32px,6vw,96px);
-    grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));
-  }
-  #about .statement{
-    font-family:'Instrument Serif',Georgia,serif;
-    font-size:clamp(1.8rem,4vw,3.2rem); line-height:1.15; margin:0;
-  }
-  #about .art{
-    aspect-ratio:1; max-width:240px; margin-top:2.5rem; background:var(--card);
-  }
-  #about .art svg{width:100%;height:100%;display:block}
-  #about p{margin:0 0 1.2rem; max-width:56ch; font-size:1.05rem}
-  #about dl{
-    margin:2rem 0 0; padding-top:1.4rem; border-top:1px solid var(--mist);
-    display:grid; grid-template-columns:auto 1fr; gap:.6rem 2rem;
-  }
-  #about dt{color:var(--soft)}
-  #about dd{margin:0}
-  #about a{color:inherit}
 </script></body></html>
