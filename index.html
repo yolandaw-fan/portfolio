@@ -1,78 +1,8 @@
-// All artwork is placeholder SVG. Replace a piece's svg with: '<img src="images/file.jpg" alt="..." style="width:100%;height:100%;object-fit:cover">'
-const S=(i,bg)=>`<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="500" fill="${bg||'#f1f5ee'}"/>${i}</svg>`;
-const L='#2a382a',G='#a9cc8e',D='#6f9f63',M='#e3e7e7',W='#fcfdfb';
-const ln=(d,w=1.6,c=L)=>`<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`;
-const n=k=>[...Array(k).keys()];
-const brandCard=(t,mark,bg,fg)=>S(`<g transform="translate(200 210)">${mark}</g><text x="200" y="360" text-anchor="middle" font-family="Instrument Serif,Georgia,serif" font-size="40" fill="${fg}">${t}</text>`,bg);
-const ART={
-drawings:{title:'Drawings',blurb:'Ink and pencil studies of leaves, hands and the spaces between them.',items:[
-['Fern study',S(ln('M200 460C200 300 210 180 240 60')+n(14).map(i=>{const y=420-i*26,l=70-i*3.5;return ln(`M${201+i*2.2} ${y}q${-l/2} -30 ${-l} -8`,1.2)+ln(`M${203+i*2.2} ${y-6}q${l/2} -30 ${l} -8`,1.2)}).join(''),'#f6f9f3'),'Ink on paper'],
-['Open hand',S(ln('M110 420C120 330 100 260 130 210M150 410C160 300 150 200 175 130M195 410C205 300 205 190 225 110M240 415C250 310 260 220 285 160M280 430C310 380 330 340 345 290')+ln('M105 425C170 450 260 450 300 430',1.2,D),W),'Pencil, 2025'],
-['Moon pond',S(`<circle cx="200" cy="190" r="90" fill="${G}" opacity=".7"/>`+n(6).map(i=>ln(`M${70+i*8} ${320+i*24}q${130-i*8} -26 ${260-i*16} 0`,1.2)).join(''),'#edf1ee'),'Charcoal and wash'],
-['Pine branch',S(ln('M60 400C160 380 260 300 350 120')+n(16).map(i=>{const x=90+i*17,y=394-i*17;return ln(`M${x} ${y}l-14 34M${x} ${y}l16 -30`,1.1,D)}).join(''),'#f6f9f3'),'Ink on paper'],
-['Stone wall',S(n(9).map(r=>n(4).map(c=>`<rect x="${40+c*80+(r%2)*40}" y="${60+r*46}" width="74" height="40" rx="8" fill="none" stroke="${L}" stroke-width="1.2"/>`+ln(`M${50+c*80+(r%2)*40} ${96+r*46}l16 -22M${62+c*80+(r%2)*40} ${96+r*46}l16 -22`,.7,D)).join('')).join(''),W),'Pencil hatching'],
-['Reclining line',S(ln('M50 330C120 250 180 400 250 320S340 260 360 300',2)+ln('M70 360C140 290 190 430 260 350',1.1,D),'#edf1ee'),'One continuous line']]},
-'graphic-design':{title:'Graphic design',blurb:'Posters, covers and editorial layouts built from shape and white space.',items:[
-['Spring poster',S(`<circle cx="200" cy="210" r="120" fill="${G}"/><rect x="60" y="340" width="280" height="14" fill="${L}"/><rect x="60" y="370" width="170" height="14" fill="${L}"/><rect x="60" y="400" width="90" height="14" fill="${D}"/>`,W),'Print'],
-['Fold',S(`<path d="M0 0H400V300L0 500Z" fill="${M}"/><path d="M0 500L400 300V500Z" fill="${D}"/><circle cx="110" cy="130" r="46" fill="${G}"/>`,W),'Book cover'],
-['Grid no. 4',S(n(4).map(r=>n(3).map(c=>`<rect x="${50+c*100}" y="${70+r*100}" width="86" height="86" fill="${(r+c)%3==0?G:(r*c)%2?M:W}" stroke="${L}" stroke-width=".8"/>`).join('')).join(''),'#f4f7f2'),'Editorial layout'],
-['Stripes',S(n(9).map(i=>`<rect x="0" y="${i*56}" width="400" height="${8+i*5}" fill="${i%2?G:D}" opacity=".85"/>`).join(''),W),'Poster'],
-['Orbit',S(`<circle cx="200" cy="250" r="140" fill="none" stroke="${L}" stroke-width="1"/><circle cx="200" cy="250" r="90" fill="${M}"/><circle cx="318" cy="170" r="28" fill="${D}"/>`,W),'Album cover'],
-['Type block',S(`<text x="40" y="200" font-family="Instrument Serif,Georgia,serif" font-size="150" fill="${L}">Aa</text><rect x="40" y="260" width="320" height="120" fill="${G}"/><rect x="40" y="400" width="200" height="8" fill="${L}"/>`,'#f4f7f2'),'Type specimen']]},
-branding:{title:'Branding',blurb:'Identities for small studios, cafés and makers.',items:[
-['Fernhill Café',brandCard('Fernhill',`<path d="M0 60C0 0 10-40 30-60M0 40q-30-10-40-34M0 10q-26-8-32-30M2 30q26-10 36-30" stroke="${L}" stroke-width="3" fill="none" stroke-linecap="round"/>`,'#f6f9f3',L),'Identity, menus'],
-['Tidewater Studio',brandCard('Tidewater',`<circle r="52" fill="${W}"/><path d="M-52 0q26-22 52 0t52 0" stroke="${D}" stroke-width="5" fill="none"/>`,D,W),'Logo, packaging'],
-['Olive & Thread',brandCard('Olive &amp; Thread',`<ellipse rx="26" ry="46" fill="${L}" transform="rotate(30)"/><path d="M-60 60C-20 20 20 20 60 60" stroke="${L}" stroke-width="2" fill="none"/>`,G,L),'Visual identity'],
-['Moss Press',brandCard('Moss Press',`<rect x="-44" y="-44" width="88" height="88" fill="none" stroke="${L}" stroke-width="3"/><circle r="22" fill="${D}"/>`,W,L),'Logo, stationery'],
-['Lantern Books',brandCard('Lantern',`<path d="M-26 40V-20a26 26 0 0 1 52 0V40Z" fill="${W}"/><rect x="-6" y="-70" width="12" height="24" fill="${W}"/>`,L,W),'Identity, signage'],
-['Sprout Market',brandCard('Sprout',`<path d="M0 50V-10M0 -10q-40 0 -44 -40q40 0 44 40M0 10q36 0 40 -36q-36 0 -40 36" fill="${D}"/>`,M,L),'Packaging']]}
-};
-const fig=([t,svg,m])=>`<figure><div class="tile" role="img" aria-label="${t}">${svg}</div><figcaption><b>${t}</b><span>${m}</span></figcaption></figure>`;
-const page=document.body.dataset.page, el=document.getElementById('works');
-if(page&&el){el.innerHTML=ART[page].items.map(fig).join('');
- const keys=Object.keys(ART).filter(k=>k!==page);
- document.getElementById('more').innerHTML=keys.map(k=>`<a href="${k}.html">${ART[k].title}</a>`).join('');}
-const cats=document.getElementById('cats');
-if(cats)cats.innerHTML=Object.entries(ART).map(([k,v])=>`<a class="cat" href="${k}.html"><div class="tile">${v.items[0][1]}</div><h3>${v.title}</h3><p>${v.items.length} pieces</p></a>`).join('');
-
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Branding — Mira Elan</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
-<body data-page="branding">
-<header class="hero small"><div class="top"><a href="index.html">Mira Elan</a><nav aria-label="Portfolio sections"><a href="drawings.html">Drawings</a><a href="graphic-design.html">Graphic design</a><a href="branding.html" aria-current="page">Branding</a></nav></div><h1>Branding</h1></header>
-<section><div class="grid" id="works"></div><div class="more" id="more"></div></section>
-<footer><h3>Say hello</h3><p><a href="mailto:hello@example.com">hello@example.com</a><br><a href="index.html">Back to home</a></p></footer>
-<script src="art.js"></script></body></html>
-
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Drawings — Mira Elan</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
-<body data-page="drawings">
-<header class="hero small"><div class="top"><a href="index.html">Mira Elan</a><nav aria-label="Portfolio sections"><a href="drawings.html" aria-current="page">Drawings</a><a href="graphic-design.html">Graphic design</a><a href="branding.html">Branding</a></nav></div><h1>Drawings</h1></header>
-<section><div class="grid" id="works"></div><div class="more" id="more"></div></section>
-<footer><h3>Say hello</h3><p><a href="mailto:hello@example.com">hello@example.com</a><br><a href="index.html">Back to home</a></p></footer>
-<script src="art.js"></script></body></html>
-
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Graphic design — Mira Elan</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
-<body data-page="graphic-design">
-<header class="hero small"><div class="top"><a href="index.html">Mira Elan</a><nav aria-label="Portfolio sections"><a href="drawings.html">Drawings</a><a href="graphic-design.html" aria-current="page">Graphic design</a><a href="branding.html">Branding</a></nav></div><h1>Graphic design</h1></header>
-<section><div class="grid" id="works"></div><div class="more" id="more"></div></section>
-<footer><h3>Say hello</h3><p><a href="mailto:hello@example.com">hello@example.com</a><br><a href="index.html">Back to home</a></p></footer>
-<script src="art.js"></script></body></html>
-
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mira Elan — Art Portfolio</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@300;400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
-<body>
-<header class="hero"><div class="top"><span>Mira Elan</span><span>Portfolio, 2026</span></div>
-<div><h1>Quiet<em>marks</em></h1><p class="lede">Drawings, graphic design and branding by Mira Elan, an independent artist and designer.</p>
-<div class="index"><a href="drawings.html">Drawings</a><a href="graphic-design.html">Graphic design</a><a href="branding.html">Branding</a></div></div></header>
-<section><div class="grid" id="cats"></div></section>
-<footer><h3>Say hello</h3><p><a href="mailto:hello@example.com">hello@example.com</a><br><a href="index.html">Back to home</a></p></footer>
-<script src="art.js"></script></body></html>
-
+<title>Yolanda W Fan — Art Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
 :root{--bg:#fcfdfb;--mist:#e8ebea;--leaf:#a9cc8e;--sage:#6f9f63;--ink:#2a382a;--soft:#5d6b5d;--card:#f1f5ee;--serif:'Instrument Serif',Georgia,serif;--sans:'Karla',system-ui,sans-serif;box-sizing:border-box}
 *{box-sizing:inherit}
 html{scroll-behavior:smooth}
@@ -115,3 +45,50 @@ footer{padding:clamp(48px,8vw,100px) clamp(24px,5vw,56px) 48px;display:flex;just
 footer h3{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,4rem);margin:0;line-height:1}
 footer p{margin:0;color:var(--soft)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+</style></head>
+<body><div id="app"></div>
+<script>
+// All artwork is placeholder SVG. Replace a piece's svg with: '<img src="images/file.jpg" alt="..." style="width:100%;height:100%;object-fit:cover">'
+const S=(i,bg)=>`<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="500" fill="${bg||'#f1f5ee'}"/>${i}</svg>`;
+const L='#2a382a',G='#a9cc8e',D='#6f9f63',M='#e3e7e7',W='#fcfdfb';
+const ln=(d,w=1.6,c=L)=>`<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`;
+const n=k=>[...Array(k).keys()];
+const brandCard=(t,mark,bg,fg)=>S(`<g transform="translate(200 210)">${mark}</g><text x="200" y="360" text-anchor="middle" font-family="Instrument Serif,Georgia,serif" font-size="40" fill="${fg}">${t}</text>`,bg);
+const ART={
+drawings:{title:'Drawings',blurb:'Ink and pencil studies of leaves, hands and the spaces between them.',items:[
+['Fern study',S(ln('M200 460C200 300 210 180 240 60')+n(14).map(i=>{const y=420-i*26,l=70-i*3.5;return ln(`M${201+i*2.2} ${y}q${-l/2} -30 ${-l} -8`,1.2)+ln(`M${203+i*2.2} ${y-6}q${l/2} -30 ${l} -8`,1.2)}).join(''),'#f6f9f3'),'Ink on paper'],
+['Open hand',S(ln('M110 420C120 330 100 260 130 210M150 410C160 300 150 200 175 130M195 410C205 300 205 190 225 110M240 415C250 310 260 220 285 160M280 430C310 380 330 340 345 290')+ln('M105 425C170 450 260 450 300 430',1.2,D),W),'Pencil, 2025'],
+['Moon pond',S(`<circle cx="200" cy="190" r="90" fill="${G}" opacity=".7"/>`+n(6).map(i=>ln(`M${70+i*8} ${320+i*24}q${130-i*8} -26 ${260-i*16} 0`,1.2)).join(''),'#edf1ee'),'Charcoal and wash'],
+['Pine branch',S(ln('M60 400C160 380 260 300 350 120')+n(16).map(i=>{const x=90+i*17,y=394-i*17;return ln(`M${x} ${y}l-14 34M${x} ${y}l16 -30`,1.1,D)}).join(''),'#f6f9f3'),'Ink on paper'],
+['Stone wall',S(n(9).map(r=>n(4).map(c=>`<rect x="${40+c*80+(r%2)*40}" y="${60+r*46}" width="74" height="40" rx="8" fill="none" stroke="${L}" stroke-width="1.2"/>`+ln(`M${50+c*80+(r%2)*40} ${96+r*46}l16 -22M${62+c*80+(r%2)*40} ${96+r*46}l16 -22`,.7,D)).join('')).join(''),W),'Pencil hatching'],
+['Reclining line',S(ln('M50 330C120 250 180 400 250 320S340 260 360 300',2)+ln('M70 360C140 290 190 430 260 350',1.1,D),'#edf1ee'),'One continuous line']]},
+'graphic-design':{title:'Graphic design',blurb:'Posters, covers and editorial layouts built from shape and white space.',items:[
+['Spring poster',S(`<circle cx="200" cy="210" r="120" fill="${G}"/><rect x="60" y="340" width="280" height="14" fill="${L}"/><rect x="60" y="370" width="170" height="14" fill="${L}"/><rect x="60" y="400" width="90" height="14" fill="${D}"/>`,W),'Print'],
+['Fold',S(`<path d="M0 0H400V300L0 500Z" fill="${M}"/><path d="M0 500L400 300V500Z" fill="${D}"/><circle cx="110" cy="130" r="46" fill="${G}"/>`,W),'Book cover'],
+['Grid no. 4',S(n(4).map(r=>n(3).map(c=>`<rect x="${50+c*100}" y="${70+r*100}" width="86" height="86" fill="${(r+c)%3==0?G:(r*c)%2?M:W}" stroke="${L}" stroke-width=".8"/>`).join('')).join(''),'#f4f7f2'),'Editorial layout'],
+['Stripes',S(n(9).map(i=>`<rect x="0" y="${i*56}" width="400" height="${8+i*5}" fill="${i%2?G:D}" opacity=".85"/>`).join(''),W),'Poster'],
+['Orbit',S(`<circle cx="200" cy="250" r="140" fill="none" stroke="${L}" stroke-width="1"/><circle cx="200" cy="250" r="90" fill="${M}"/><circle cx="318" cy="170" r="28" fill="${D}"/>`,W),'Album cover'],
+['Type block',S(`<text x="40" y="200" font-family="Instrument Serif,Georgia,serif" font-size="150" fill="${L}">Aa</text><rect x="40" y="260" width="320" height="120" fill="${G}"/><rect x="40" y="400" width="200" height="8" fill="${L}"/>`,'#f4f7f2'),'Type specimen']]},
+branding:{title:'Branding',blurb:'Identities for small studios, cafés and makers.',items:[
+['Fernhill Café',brandCard('Fernhill',`<path d="M0 60C0 0 10-40 30-60M0 40q-30-10-40-34M0 10q-26-8-32-30M2 30q26-10 36-30" stroke="${L}" stroke-width="3" fill="none" stroke-linecap="round"/>`,'#f6f9f3',L),'Identity, menus'],
+['Tidewater Studio',brandCard('Tidewater',`<circle r="52" fill="${W}"/><path d="M-52 0q26-22 52 0t52 0" stroke="${D}" stroke-width="5" fill="none"/>`,D,W),'Logo, packaging'],
+['Olive & Thread',brandCard('Olive &amp; Thread',`<ellipse rx="26" ry="46" fill="${L}" transform="rotate(30)"/><path d="M-60 60C-20 20 20 20 60 60" stroke="${L}" stroke-width="2" fill="none"/>`,G,L),'Visual identity'],
+['Moss Press',brandCard('Moss Press',`<rect x="-44" y="-44" width="88" height="88" fill="none" stroke="${L}" stroke-width="3"/><circle r="22" fill="${D}"/>`,W,L),'Logo, stationery'],
+['Lantern Books',brandCard('Lantern',`<path d="M-26 40V-20a26 26 0 0 1 52 0V40Z" fill="${W}"/><rect x="-6" y="-70" width="12" height="24" fill="${W}"/>`,L,W),'Identity, signage'],
+['Sprout Market',brandCard('Sprout',`<path d="M0 50V-10M0 -10q-40 0 -44 -40q40 0 44 40M0 10q36 0 40 -36q-36 0 -40 36" fill="${D}"/>`,M,L),'Packaging']]}
+};
+
+const fig=([t,svg,m])=>`<figure><div class="tile" role="img" aria-label="${t}">${svg}</div><figcaption><b>${t}</b><span>${m}</span></figcaption></figure>`;
+const NAV=cur=>`<nav aria-label="Portfolio sections">${Object.entries(ART).map(([k,v])=>`<a href="#${k}"${k===cur?' aria-current="page"':''}>${v.title}</a>`).join('')}</nav>`;
+const FOOT=`<footer><h3>Say hello</h3><p><a href="mailto:hello@example.com">hello@example.com</a><br><a href="#">Back to home</a></p></footer>`;
+function render(){
+ const k=location.hash.slice(1),app=document.getElementById('app');
+ if(ART[k]){document.title=ART[k].title+' — Yolanda W Fan';
+  app.innerHTML=`<header class="hero small"><div class="top"><a href="#">Yolanda W Fan</a>${NAV(k)}</div><h1>${ART[k].title}</h1></header><section><div class="grid">${ART[k].items.map(fig).join('')}</div><div class="more">${Object.keys(ART).filter(x=>x!==k).map(x=>`<a href="#${x}">${ART[x].title}</a>`).join('')}</div></section>${FOOT}`;
+ }else{document.title='Yolanda W Fan — Art Portfolio';
+  app.innerHTML=`<header class="hero"><div class="top"><span>Yolanda W Fan</span><span>Portfolio, 2026</span></div><div><h1>Quiet<em>marks</em></h1><p class="lede">Drawings, graphic design and branding by Yolanda W Fan, an independent artist and designer.</p><div class="index">${Object.entries(ART).map(([x,v])=>`<a href="#${x}">${v.title}</a>`).join('')}</div></div></header><section><div class="grid">${Object.entries(ART).map(([x,v])=>`<a class="cat" href="#${x}"><div class="tile">${v.items[0][1]}</div><h3>${v.title}</h3><p>${v.items.length} pieces</p></a>`).join('')}</div></section>${FOOT}`;}
+ window.scrollTo(0,0);
+}
+addEventListener('hashchange',render);render();
+</script></body></html>
